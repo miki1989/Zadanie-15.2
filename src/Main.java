@@ -16,12 +16,13 @@ public class Main {
         boolean flag = true;
         while (flag) {
             try {
-                System.out.println("Typu komparatorów");
+                System.out.println("Typy komparatorów");
                 SortType[] sortTypes = SortType.values();
                 for (SortType sortType : sortTypes) {
                     System.out.println(sortType);
                 }
                 String sortTypeString = scanner.nextLine();
+                sortTypeString = sortTypeString.toUpperCase();
                 SortType sortType = SortType.valueOf(sortTypeString);
                 if (sortType == SortType.IMIEMALEJACO) {
                     listUsers.sort(Users.IMIEMALEJACO);
