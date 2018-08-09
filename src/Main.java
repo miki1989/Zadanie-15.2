@@ -4,13 +4,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args)  {
 
-        ArrayList<Users> listUsers = new ArrayList<>();
-        listUsers.add(new Users("Jan", "Kowalski"));
-        listUsers.add(new Users("Ramona", "Shelbourne"));
-        listUsers.add(new Users("Adrian", "Wojnarowski"));
-        listUsers.add(new Users("Chams", "Charania"));
-        listUsers.add(new Users("Fareed", "Zakaria"));
-        listUsers.add(new Users("Zygmunt", "Bee"));
+        ArrayList<User> listUsers = new ArrayList<>();
+        listUsers.add(new User("Jan", "Kowalski"));
+        listUsers.add(new User("Ramona", "Shelbourne"));
+        listUsers.add(new User("Adrian", "Wojnarowski"));
+        listUsers.add(new User("Chams", "Charania"));
+        listUsers.add(new User("Fareed", "Zakaria"));
+        listUsers.add(new User("Zygmunt", "Bee"));
 
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
@@ -24,25 +24,27 @@ public class Main {
                 String sortTypeString = scanner.nextLine();
                 sortTypeString = sortTypeString.toUpperCase();
                 SortType sortType = SortType.valueOf(sortTypeString);
-                if (sortType == SortType.IMIEMALEJACO) {
-                    listUsers.sort(Users.IMIEMALEJACO);
-                    System.out.println(listUsers);
-                }
-                if (sortType == SortType.IMIEROSNACO) {
-                    listUsers.sort((Users.IMIEROSNACO));
-                    System.out.println(listUsers);
-                }
-                if (sortType == SortType.NAZWISKOMALEJACO) {
-                    listUsers.sort(Users.NAZWISKOMALEJACO);
-                    System.out.println(listUsers);
-                }
-                if (sortType == SortType.NAZWISKOROSNACO) {
-                    listUsers.sort(Users.NAZWISKOROSNACO);
-                    System.out.println(listUsers);
-                }
-                if(sortType == SortType.END){
-                    System.out.println("Koniec programu");
-                    flag = false;
+                switch (sortType){
+                    case IMIEMALEJACO:
+                        listUsers.sort(Comparatory.IMIEMALEJACO);
+                        System.out.println(listUsers);
+                        break;
+                    case IMIEROSNACO:
+                        listUsers.sort((Comparatory.IMIEROSNACO));
+                        System.out.println(listUsers);
+                        break;
+                    case NAZWISKOMALEJACO:
+                        listUsers.sort(Comparatory.NAZWISKOMALEJACO);
+                        System.out.println(listUsers);
+                        break;
+                    case NAZWISKOROSNACO:
+                        listUsers.sort(Comparatory.NAZWISKOROSNACO);
+                        System.out.println(listUsers);
+                        break;
+                    case END:
+                        System.out.println("Koniec programu");
+                        flag = false;
+                        break;
                 }
             }
             catch (IllegalArgumentException ex){
@@ -50,16 +52,16 @@ public class Main {
             }
 
         }
-        /*listUsers.sort(Users.IMIEMALEJACO);
+        /*listUsers.sort(User.IMIEMALEJACO);
         System.out.println(listUsers);
         System.out.println();
-        listUsers.sort(Users.IMIEROSNACO);
+        listUsers.sort(User.IMIEROSNACO);
         System.out.println(listUsers);
         System.out.println();
-        listUsers.sort(Users.NAZWISKOMALEJACO);
+        listUsers.sort(User.NAZWISKOMALEJACO);
         System.out.println(listUsers);
         System.out.println();
-        listUsers.sort(Users.NAZWISKOROSNACO);
+        listUsers.sort(User.NAZWISKOROSNACO);
         System.out.println(listUsers);
         */
     }
